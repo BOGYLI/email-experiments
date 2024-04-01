@@ -1,0 +1,39 @@
+version: '3'
+services:
+  mail:
+    container_name: smtp-server
+    image: bytemark/smtp
+    restart: always
+    ports:
+      - "25:25"
+
+  php:
+    container_name: php-server
+    build: ./php
+    volumes:
+      - ./php:/var/www/html
+    restart: always
+    ports:
+      - "8080:8080"
+
+  webtop:
+    build: ./webtop
+    container_name: webtop
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Berlin
+    volumes:
+      - ./webtop:/config
+    ports:
+      - 3000:3000
+      - 3001:3001
+    restart: unless-stopped
+
+  mailcatcher:
+    container_name: mailcatcher
+    restart: on-failure
+    image: dockage/mailcatcher:0.9.0
+    ports:
+    - "1080:1080"
+    - "1025:1025"

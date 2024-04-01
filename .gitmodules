@@ -1,0 +1,3 @@
+[submodule "mailcatcher"]
+	path = mailcatcher
+	url = https://github.com/sj26/mailcatcher.git
