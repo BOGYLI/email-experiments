@@ -1,1 +1,9 @@
 .venv
+webtop/.cache
+webtop/.config
+webtop/.dbus
+webtop/.local
+webtop/.mozilla
+webtop/.XDG
+webtop/.bash_history
+webtop/.ICEauthority
